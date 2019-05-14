@@ -25,6 +25,7 @@ services:
     depends_on:
       - postgres
       - redis
+      - elasticsearch
   postgres:
     image: postgres:10.5
     environment:
@@ -35,3 +36,10 @@ services:
       - "${DB_PORT:-5432}:5432"
   redis:
     image: redis:4.0.0
+  elasticsearch:
+    image: elasticsearch:6.6.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
