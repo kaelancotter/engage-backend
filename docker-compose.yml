@@ -26,13 +26,10 @@ services:
     depends_on:
       - postgres
       - redis
-<<<<<<< HEAD
-      - elasticsearch
-=======
-    links: 
+    links:
       - postgres
       - redis
->>>>>>> b8325b09341aa264c1c027fe94279b94f6f03ad1
+      - elasticsearch
   postgres:
     image: postgres:11-alpine
     environment:
@@ -42,15 +39,11 @@ services:
     ports:
       - "${DB_PORT:-5432}:5432"
   redis:
-<<<<<<< HEAD
-    image: redis:4.0.0
+    image: redis:5.0.5-alpine
   elasticsearch:
-    image: elasticsearch:6.6.0
+    image: elasticsearch:7.2.0
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
       - discovery.type=single-node
-=======
-    image: redis:5.0.5-alpine
->>>>>>> b8325b09341aa264c1c027fe94279b94f6f03ad1
